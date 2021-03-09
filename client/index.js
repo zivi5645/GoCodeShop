@@ -44,7 +44,6 @@ app.get("/api/products", async (req, res) => {
     res.send(products);
   }
 });
-
 app.get("/api/products/:productId", async (req, res) => {
   let productId = req.params.productId;
   console.log(productId);
