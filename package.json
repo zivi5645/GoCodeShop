@@ -1,0 +1,22 @@
+{
+  "name": "abc",
+  "version": "0.0.1",
+  "description": "my server",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js",
+    "heroku-postbuild": "cd client && npm i && npm run build"
+
+  },
+  "devDependencies": {
+    "nodemon": "~1.3.8"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.11.18",
+    "path": "^0.12.7"
+  }
+}

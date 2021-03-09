@@ -1,0 +1,343 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: ’’;
+  content: none;
+}
+/* remember to define visible focus styles! 
+:focus{
+  outline:?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*------------------------------------*\
+  $MAIN
+\*------------------------------------*/
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+body {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1240px;
+  font-family: "Roboto", sans-serif;
+  background-color: #f6f6f6;
+}
+
+/* Typography */
+
+h1 {
+  font-size: 28px;
+  font-weight: 300;
+  flex: 1;
+}
+
+h5 {
+  font-weight: 500;
+  line-height: 1.7em;
+}
+
+h6 {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Product Layout */
+
+.product-filter {
+  display: flex;
+  padding: 30px 0;
+}
+
+.sort {
+  display: flex;
+  align-self: flex-end;
+}
+
+.collection-sort {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-sort:first-child {
+  padding-right: 20px;
+}
+
+label {
+  color: #666;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 2em;
+  text-transform: uppercase;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2%;
+  flex: 1 16%;
+
+  background-color: #fff;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+.product-image img {
+  width: 100%;
+}
+
+.product-info {
+  margin-top: auto;
+  padding-top: 20px;
+  text-align: center;
+}
+
+@media (max-width: 920px) {
+  .product-card {
+    flex: 1 21%;
+  }
+  #product-card {
+    flex: 1 21%;
+  }
+
+  .products .product-card:first-child,
+  .products .product-card:nth-child(2) {
+    flex: 2 46%;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    flex: 1 46%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .product-filter {
+    flex-direction: column;
+  }
+
+  .sort {
+    align-self: flex-start;
+  }
+}
+.saleGif {
+  width: 15%;
+  height: 72px;
+}
+/* #saleCountDown {
+} */
+.saleComponent {
+  font-size: 24px;
+  border: 10px solid black;
+  padding: 2rem 1rem;
+  min-height: 3em;
+  resize: both;
+  border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E")
+    1;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Indie Flower", cursive;
+  font-size: 45px;
+  align-items: center;
+  height: 75px;
+  margin-top: 38px;
+}
+.saleComponentOver {
+  border: red solid 5px;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Indie Flower", cursive;
+  font-size: 45px;
+  align-items: center;
+  margin-top: 38px;
+  height: 106px;
+}
+
+.nSale {
+  display: flex;
+  flex-direction: column;
+  color: red;
+  font-size: 20px;
+  padding: 2%;
+  flex: 1 16%;
+  background-color: #fff;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+}
+.onSale {
+  font-size: 24px;
+  border: 10px solid black;
+  padding: 2rem 1rem;
+  min-height: 3em;
+  resize: both;
+  background: #ffd73e33;
+  border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E")
+    1;
+  display: flex;
+  flex-direction: column;
+  color: rgb(53, 70, 225);
+  font-size: 20px;
+  padding: 2%;
+  flex: 1 16%;
+  background-color: #fff;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+  /* background-color: rgb(218 218 218); */
+}
+.gif {
+  height: 102px;
+
+  width: 27%;
+}
+.oldPrice {
+  text-decoration: line-through;
+  color: rgb(196, 29, 29);
+  font-size: 17px;
+}
+#salePrice {
+  font-size: 22px;
+  color: rgb(44, 184, 104);
+}
+
+.nav {
+  width: 6%;
+  color: #fa2222;
+}
+.the_product {
+  width: 52%;
+}
+.slider {
+  direction: rtl;
+}
