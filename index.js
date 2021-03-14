@@ -1,14 +1,14 @@
 const express = require("express");
-let cors = require("cors");
+const cors = require("cors");
 const path = require("path");
 const app = express();
-const url = process.env.MONGO_URI || "mongodb://localhost:27017";
 app.use(cors());
-app.use("/", express.static("client"));
+// app.use("/", express.static("client"));
+app.use(express.static(path.join(__dirname, "client/build")));
 app.use(express.json());
 const mongoose = require("mongoose");
 mongoose.connect(
-  "mongodb+srv://gocode-shop-oz:Oz12345678@cluster0.dvqms.mongodb.net/gocodeshop?retryWrites=true&w=majority",
+  `mongodb+srv://gocode-shop-oz:Oz12345678@cluster0.dvqms.mongodb.net/gocodeshop?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -83,9 +83,9 @@ app.get("*", (req, res) => {
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 9000;
 db.once("open", function () {
-  app.listen(PORT, () => {
-    console.log(`Gocode App Server listening on port ${PORT}!`);
+  app.listen(9000, () => {
+    console.log(`Gocode App Server listening on port ${9000}!`);
   });
 });
