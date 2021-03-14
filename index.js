@@ -7,13 +7,13 @@ app.use("/", express.static("client"));
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(express.json());
 const mongoose = require("mongoose");
-mongoose.connect(
-  `mongodb+srv://gocode-shop-oz:Oz12345678@cluster0.dvqms.mongodb.net/gocodeshop?retryWrites=true&w=majority`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const productSchema = new mongoose.Schema({
   title: String,
@@ -83,7 +83,7 @@ app.get("*", (req, res) => {
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 5000;
 db.once("open", function () {
   app.listen(PORT, () => {
     console.log(`Gocode App Server listening on port ${PORT}!`);

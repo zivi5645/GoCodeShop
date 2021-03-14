@@ -2,9 +2,6 @@
   "name": "gocode-shop",
   "version": "0.1.0",
   "private": true,
-  "engines":{
-    "node":"14.x"
-  },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.9",
@@ -16,7 +13,6 @@
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
-  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -29,7 +25,7 @@
       "react-app/jest"
     ]
   },
-  "proxy":"http://localhost:9000",
+  "proxy": "http://localhost:5000",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -83,7 +83,7 @@ app.get("*", (req, res) => {
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 db.once("open", function () {
   app.listen(PORT, () => {
     console.log(`Gocode App Server listening on port ${PORT}!`);
