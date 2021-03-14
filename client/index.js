@@ -2,6 +2,7 @@ const express = require("express");
 let cors = require("cors");
 const path = require("path");
 const app = express();
+require("dotenv".config());
 // const url = process.env.MONGO_URI || "mongodb://localhost:27017";
 app.use(express.static(path.join(__dirname, "client/build")));
 
@@ -9,13 +10,10 @@ app.use(cors());
 app.use("/", express.static("client"));
 app.use(express.json());
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb+srv://gocode-shop-oz:Oz12345678@cluster0.dvqms.mongodb.net/gocodeshop?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const productSchema = new mongoose.Schema({
   title: String,
