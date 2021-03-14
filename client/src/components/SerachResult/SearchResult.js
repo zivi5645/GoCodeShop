@@ -10,7 +10,7 @@ const SerachResult = (props) => {
   const [products, setProducts] = useState([]);
   useEffect(async () => {
     const response = await fetch(
-      `http://localhost:5000/api/products?q=${search}`
+      `http://localhost:5000/api/products?q=${serachResult}`
     );
     const fetchProducts = await response.json();
     console.log(fetchProducts);
