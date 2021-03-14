@@ -3,7 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 app.use(cors());
-// app.use("/", express.static("client"));
+app.use("/", express.static("client"));
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(express.json());
 const mongoose = require("mongoose");
@@ -85,7 +85,7 @@ db.on("error", console.error.bind(console, "connection error:"));
 
 const PORT = process.env.PORT || 9000;
 db.once("open", function () {
-  app.listen(9000, () => {
-    console.log(`Gocode App Server listening on port ${9000}!`);
+  app.listen(PORT, () => {
+    console.log(`Gocode App Server listening on port ${PORT}!`);
   });
 });
