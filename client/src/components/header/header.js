@@ -1,6 +1,8 @@
 import React from "react";
 import PriceSlider from "../PriceSlider/PriceSlider";
 import { usrEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import SerachResult from "../SerachResult/SearchResult";
 const Header = (props) => {
   let [search, setSearch] = useState(null);
   // const setSerchToHome =(searchNew)=>setSearchreq(searchNew)
@@ -16,6 +18,7 @@ const Header = (props) => {
     console.log("sad");
   };
   // console.log(props.filteredPrice);
+  <SerachResult searchResult={search} />;
 
   return (
     <>
@@ -44,13 +47,17 @@ const Header = (props) => {
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search Your Product!"
             ></input>
-            <button
-              onClick={() =>
-                console.log(`http://localhost:9000/products?q=${search}`)
-              }
-            >
-              Search
-            </button>
+            <Link to="/api/products?q=">
+              {" "}
+              <button
+                onClick={() =>
+                  console.log(`http://localhost:5000/api/products?q=${search}`)
+                }
+              >
+                Search
+              </button>
+            </Link>
+
             {/* <select>
               <option value="/">Featured</option>
               <option value="/">Best Selling</option>

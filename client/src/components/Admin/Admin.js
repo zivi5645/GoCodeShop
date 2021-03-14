@@ -51,7 +51,7 @@ const Admin = () => {
         onChange={(e) => setNewCategory(e.target.value)}
       ></input>
       <br></br>
-      <button onClick={upload}>send</button>
+      <button onClick={check}>send</button>
     </div>
   );
 };

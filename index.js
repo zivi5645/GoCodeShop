@@ -2,11 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const app = express();
+const mongoose = require("mongoose");
+
 app.use(cors());
 app.use("/", express.static("client"));
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(express.json());
-const mongoose = require("mongoose");
 
 require("dotenv").config();
 
