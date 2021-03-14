@@ -25,7 +25,7 @@ const Home = (props) => {
   useEffect(async () => {
     const response = await fetch(`/api/products`);
     const fetchProducts = await response.json();
-    // console.log(fetchProducts);
+    console.log(fetchProducts);
     setProducts(fetchProducts);
   }, []);
   useEffect(() => {

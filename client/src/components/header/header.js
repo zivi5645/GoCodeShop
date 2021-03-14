@@ -46,7 +46,7 @@ const Header = (props) => {
             ></input>
             <button
               onClick={() =>
-                console.log(`http://127.0.0.1:9000/products?q=${search}`)
+                console.log(`http://localhost:9000/products?q=${search}`)
               }
             >
               Search

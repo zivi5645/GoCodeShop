@@ -1,7 +1,7 @@
 import { React, useContext } from "react";
 import "./about.css";
 import ThemeContext, { themes } from "../../ThemeContext";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const About = () => {
   const theme = useContext(ThemeContext);
