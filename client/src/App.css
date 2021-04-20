@@ -146,6 +146,7 @@ body {
   max-width: 1240px;
   font-family: "Roboto", sans-serif;
   background-color: #f6f6f6;
+  font-family: heebo;
 }
 
 /* Typography */
@@ -171,6 +172,7 @@ h6 {
 .product-filter {
   display: flex;
   padding: 30px 0;
+  flex-direction: column;
 }
 
 .sort {
@@ -340,4 +342,16 @@ label {
 }
 .slider {
   direction: rtl;
+}
+.cart-logo {
+  display: flex;
+  width: 5%;
+  margin-top: 18px;
+}
+.counter {
+  background-color: black;
+  font-size: 10px;
+  height: 11px;
+  margin-left: -19px;
+  margin-top: -6px;
 }

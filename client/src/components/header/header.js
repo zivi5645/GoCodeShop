@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import PriceSlider from "../PriceSlider/PriceSlider";
 import { usrEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SerachResult from "../SerachResult/SearchResult";
+import ThemeContext from "../../ThemeContext";
+import addIcon from "../../icons/addIcon";
 const Header = (props) => {
   let [search, setSearch] = useState(null);
-  // const setSerchToHome =(searchNew)=>setSearchreq(searchNew)
+  const setSerchToHome = (searchNew) => setSearchreq(searchNew);
   const groupBy = (xs, key) =>
     xs.reduce((rv, x) => {
       rv[x[key]] = true || [];
@@ -19,15 +21,25 @@ const Header = (props) => {
   };
   // console.log(props.filteredPrice);
   <SerachResult searchResult={search} />;
-
+  const adminFromContext = useContext(ThemeContext);
+  // console.log(adminFromContext.admin, "by header");
   return (
     <>
       <nav className="product-filter">
-        <h1>
-          {props.categorySelected === "all"
-            ? "All our products"
-            : props.categorySelected}
-        </h1>
+        {!adminFromContext && (
+          <h1>
+            {props.categorySelected === "all"
+              ? "All our products"
+              : props.categorySelected}
+          </h1>
+        )}
+        {adminFromContext.admin && (
+          <Link to="add-product" style={{ textDecoration: "none" }}>
+            <div style={{ display: "flex", flexDirection: "initial" }}>
+              <span style={{ color: "green" }}>הוסף מוצר חדש</span>
+            </div>
+          </Link>
+        )}
 
         <div className="sort">
           <div className="collection-sort">

@@ -9,6 +9,5 @@ export const themes = {
     background: "#222222",
   },
 };
-
 const ThemeContext = createContext(null);
 export default ThemeContext;

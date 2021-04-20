@@ -6,12 +6,14 @@ import ThemeContext, { themes } from "../ThemeContext";
 
 import "../App.css";
 const Home = (props) => {
+  // console.log(props);
+  const products = props.products;
   const [timeOverCheck, setTimeOverCheck] = useState(false);
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [productId, setProductId] = useState("");
   const [categorySelected, setCategorySelected] = useState("all");
   let [minutes, setMinutes] = useState(0);
-  let [seconds, setSeconds] = useState(8);
+  let [seconds, setSeconds] = useState(55);
   let [filteredPrice, setFilteredPrice] = useState(0);
   let [searchReq, setSearchReq] = useState(undefined);
   const [content, setContent] = useState("Ends in:");
@@ -22,12 +24,7 @@ const Home = (props) => {
   const selected = (e) => {
     setCategorySelected(e.target.value);
   };
-  useEffect(async () => {
-    const response = await fetch(`/api/products`);
-    const fetchProducts = await response.json();
-    console.log(fetchProducts);
-    setProducts(fetchProducts);
-  }, []);
+
   useEffect(() => {
     let timeOutId;
     let minutesClock = minutes;
@@ -54,7 +51,7 @@ const Home = (props) => {
   }, [seconds]);
   // console.log(searchReq);
   const theme = useContext(ThemeContext);
-
+  const isAdmin = useContext(ThemeContext);
   return (
     <div style={{ background: theme.background, color: theme.foreground }}>
       <Header

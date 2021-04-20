@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ThemeContext, { themes } from "../../ThemeContext";
 const Products = (props) => {
-  // console.log(props.products);
+  // console.log(props);
   const productsItems = props.products.map(
     ({ image, title, price, _id, id, category }) => (
       <Product

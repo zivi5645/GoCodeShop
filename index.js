@@ -10,7 +10,6 @@ app.use(express.static(path.join(__dirname, "client/build")));
 app.use(express.json());
 
 require("dotenv").config();
-
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -52,14 +51,9 @@ app.get("/api/products/:productId", async (req, res) => {
 });
 
 app.post("/api/admin", (req, res) => {
-  const { title, image, price, description, category } = req.body;
-  new Product(
-    { title },
-    { image },
-    { price },
-    { description },
-    { category }
-  ).save();
+  // const { title, image, price, description, category } = req.body;
+  console.log(req.body);
+  new Product(req.body).save();
   res.send("OK!");
 });
 app.put("/api/products/:productId", async (req, res) => {

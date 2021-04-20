@@ -1,58 +1,104 @@
-import React, { useState } from "react";
-
-const Admin = () => {
-  let [newTitle, setNewTitle] = useState(null);
-  let [newPrice, setNewPrice] = useState(null);
-  let [newImage, setNewImage] = useState(null);
-  let [newDescription, setNewDescription] = useState(null);
-  let [newCategory, setNewCategory] = useState(null);
-  let [final, setFinal] = useState({});
-  const check = async () => {
-    await setFinal(`title:${newTitle}`);
+import React, { useContext, useEffect, useState } from "react";
+import "./Admin.css";
+import InputField from "../common/inputfield/inputField";
+import ThemeContext from "../../ThemeContext";
+const Admin = ({ isAdmin, adminLogOut }) => {
+  const [reLogin, setReLogin] = useState(true);
+  const [userInput, setUserInput] = useState({});
+  const [type, setType] = useState(true);
+  const [adminUser, setAdminUser] = useState("ADMIN");
+  const [adminPassword, setAdminPassword] = useState("1997");
+  const adminCheck = () => {
+    if (
+      userInput.userName === adminUser &&
+      userInput.password === adminPassword
+    ) {
+      console.log("ADMIN AT HOME");
+      isAdmin();
+    }
   };
-  const upload = async () => {
-    const response = await fetch("`http://127.0.0.1:9000/products", {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(final),
-    });
+  const logOut = () => {
+    console.log(adminFromContext.admin);
+    adminLogOut();
+    setReLogin(!reLogin);
   };
+  const adminFromContext = useContext(ThemeContext);
+  console.log("productPage context", adminFromContext.admin);
   return (
-    <div style={{ display: "block" }}>
-      <div>Adding new product!</div>
-      <div>Please make sure that all the neccesery detailes are inserted </div>
-      <input
-        placeholder="title"
-        onChange={(e) => {
-          setNewTitle(e.target.value);
-        }}
-      ></input>
-      <br></br>
-      <input
-        type="number"
-        placeholder="price"
-        onChange={(e) => setNewPrice(e.target.value)}
-      ></input>
-      <br></br>
-      <input
-        placeholder="image url only"
-        onChange={(e) => setNewImage(e.target.value)}
-      ></input>
-      <br></br>
-      <input
-        placeholder="description"
-        onChange={(e) => setNewDescription(e.target.value)}
-      ></input>
-      <br></br>
-      <input
-        placeholder="category"
-        onChange={(e) => setNewCategory(e.target.value)}
-      ></input>
-      <br></br>
-      <button onClick={check}>send</button>
-    </div>
+    <>
+      {!  adminFromContext.admin ? (
+        <div className="container" style={{ margin: "40px" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span style={{ color: "black", marginTop: "8px" }}>
+              אנא התחבר כמנהל האתר{" "}
+            </span>
+            <span
+              style={{ color: "black", fontSize: "12px", marginTop: "8px" }}
+            >
+              ככה תוכל לערוך,למחוק ולהוסיף מוצרים חדשים לחנות שלך!{" "}
+            </span>
+          </div>
+          <div className="inputs  ">
+            <InputField
+              placeholder=" הכנס שם משתמש"
+              onChange={(e) =>
+                setUserInput({ ...userInput, userName: e.target.value })
+              }
+            />
+            <InputField
+              placeholder="   הכנס סיסמא  "
+              type={type ? "password" : "text"}
+              onChange={(e) =>
+                setUserInput({ ...userInput, password: e.target.value })
+              }
+            />
+          </div>
+          <div>
+            <button
+              onClick={adminCheck}
+              className="add-button"
+              style={{
+                backgroundColor: "grey",
+                width: "42%",
+                borderRadius: "10px",
+                marginBottom: "15px",
+                marginTop: "15px",
+              }}
+            >
+              התחבר{" "}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div
+          className="container"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <span style={{ color: "black", marginTop: "95px", fontSize: "45px" }}>
+            אתה מחובר כמנהל האתר{" "}
+          </span>
+          <button
+            onClick={logOut}
+            className="add-button"
+            style={{
+              backgroundColor: "grey",
+              width: "22%",
+              height: "35px",
+              borderRadius: "10px",
+              marginBottom: "15px",
+              marginTop: "65px",
+            }}
+          >
+            {" "}
+            התנתק
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 export default Admin;

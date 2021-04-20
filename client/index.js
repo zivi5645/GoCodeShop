@@ -51,16 +51,14 @@ app.get("/api/products/:productId", async (req, res) => {
 });
 
 app.post("/api/admin", (req, res) => {
-  const { title, image, price, description, category } = req.body;
-  new Product(
-    { title },
-    { image },
-    { price },
-    { description },
-    { category }
-  ).save();
-  res.send("OK!");
+  res.send("sda!");
 });
+// app.post("/api/admin", (req, res) => {
+//   const { title, image, price, description, category } = req.body;
+//   console.log("ddd");
+//   new Product({ title, price, image, description, category }).save();
+//   res.send("sdaaaaaaaaaa!");
+// });
 app.put("/api/products/:productId", async (req, res) => {
   const { productId } = req.params;
   const { title, description, price, image, category } = req.body;
